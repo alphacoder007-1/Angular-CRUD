@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts {
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/angular.js"></script>
+<script src="~/scripts/ContactsScripts/Module.js"></script>
+<script src="~/scripts/ContactsScripts/Service.js"></script>
+<script src="~/scripts/ContactsScripts/Controller.js"></script>
+}
+
+<h2>Index</h2>
+
+
+<div ng-app="demoModule" id="body">
+    <div ng-controller="demoCtrl">
+
+        <div>
+            <h1>Contacts</h1>
+
+        </div>
+
+        <div>
+            <hr />
+        </div>
+
+
+        <div ng-show="divList">
+
+ 
+
+            <h3>List of Contacts</h3>
+            <br />
+            <span ng-click="AddContactDiv()" class="btn btn-default">
+                Add Contact
+            </span>
+            <br />
+            <table border="1" ng-cloak class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="display: none;">ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="items in contactsData">
+                        <td hidden="hidden">{{items.ID}}</td>
+                        <td>{{items.Name}}</td>
+                        <td>{{items.Phone}}</td>
+                        <td>{{items.Email}}</td>
+                        <td>
+                            <button ng-model="$scope.Contact" ng-click="edit(contactsData[$index])">Edit</button>
+                            <button ng-click="delete($index)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          
+            <br />
+        </div>
+
+     
+
+        <div ng-show="divEdit">
+            <div>
+                <h2>Update Product</h2>
+            </div>
+            <div hidden="hidden">
+                <label for="ID">ID</label>
+                <input type="text" data-ng-model="Contact.ID" />
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" data-ng-model="Contact.Name" />
+            </div>
+
+            <div>
+                <label for="category">Phone</label>
+                <input type="text" data-ng-model="Contact.Phone" />
+            </div>
+
+            <div>
+                <label for="price">Email</label>
+                <input type="text" data-ng-model="Contact.Email" />
+            </div>
+            <br />
+            <div>
+                <button data-ng-click="update()">Update</button>
+                <button data-ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+
+        <div ng-show="divAdd">
+            <div>
+                <h2>Add New Contact</h2>
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" data-ng-model="AddContact.Name" />
+            </div>
+
+            <div>
+                <label for="phone">Phone</label>
+                <input type="text" data-ng-model="AddContact.Phone" />
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="text" data-ng-model="AddContact.Email" />
+            </div>
+            <br />
+            <div>
+                <button data-ng-click="save()">Save</button>
+                <button data-ng-click="cancel()">Clear</button>
+            </div>
+        </div>
+
+    </div>
+</div>

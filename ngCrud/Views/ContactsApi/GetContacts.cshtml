@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Get Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts {
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/angular.js"></script>
+<script src="~/scripts/AngularDemo.js"></script>
+}
+
+<h2>Index</h2>
+
+
+<div ng-app="demoModule" id="body">
+    <div ng-controller="demoCtrl">
+
+        <h3>List of Contacts</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="items in contactsData track by $index">
+                    <td>{{items.Id}}</td>
+                    <td>{{items.Name}}</td>
+                    <td>{{items.Phone}}</td>
+                    <td>{{items.Email}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+    </div>
+</div>
